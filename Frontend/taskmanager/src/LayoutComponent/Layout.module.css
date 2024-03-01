@@ -1,0 +1,9 @@
+
+.head {
+    padding: 20px;
+    text-align: center;
+    background-color: aqua;
+    height: 10vh;
+    width: 100vw;
+    position: fixed;
+}
