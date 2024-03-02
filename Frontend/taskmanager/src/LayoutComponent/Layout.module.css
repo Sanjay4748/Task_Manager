@@ -1,9 +1,42 @@
 
 .head {
-    padding: 20px;
     text-align: center;
     background-color: aqua;
     height: 10vh;
     width: 100vw;
     position: fixed;
+}
+
+.foot {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: cadetblue;
+    height: 10vh;
+    width: 100vw;
+}
+
+.midcontent {
+    display: table;
+    height: 80vh;
+    width: 100vw;
+    background-color: blue;
+}
+
+.sidebarcontent {
+    display: table-cell;
+    width: 20vw;
+    background-color: rgb(107, 71, 71);
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.midsec2content {
+    display: flex;
+    justify-content: center;
 }
