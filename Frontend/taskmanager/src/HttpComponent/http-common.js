@@ -1,13 +1,23 @@
-import { Axios } from "axios";
+import axios from 'axios';
 
-const baseurl = `http://192.168.1.84:8080/`
+const baseurl = 'http://192.168.1.66:8080/';
 
-const AddUser = (body) =>{
-    const result = Axios.post(baseurl+`adduser`,body)
-    
-}
+const AddUser = async (body) => {
+   try {
+    return await axios.post(baseurl + 'adduser', body);
+    } catch (err) {
+        return err;
+    }
+};
 
+const SendMail = async (email, body) => {
+    try {
+        return axios.post(baseurl + `mail/send/${email}`, body);
+    } catch (err) {
+        return err;
+    }
+};
 
-const Httfunctions = {AddUser}
+const HttpFunctions = { AddUser, SendMail };
 
-export default Httfunctions;
+export default HttpFunctions;
