@@ -1,33 +1,33 @@
 package com.example.taskmanager.Models;
 
 public class UserDetails {
-    private String firstName;
-    private String lastName;
-    private int mobileno;
+    private String firstname;
+    private String lastname;
+    private String mobileno;
     private String email;
     private String password;
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public int getMobileno() {
+    public String getMobileno() {
         return mobileno;
     }
 
-    public void setMobileno(int mobileno) {
+    public void setMobileno(String mobileno) {
         this.mobileno = mobileno;
     }
 
@@ -46,4 +46,5 @@ public class UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
