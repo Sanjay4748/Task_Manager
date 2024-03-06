@@ -1,6 +1,8 @@
 package com.example.taskmanager.Controllers;
 
 import java.util.HashMap;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -24,10 +26,18 @@ public class EmailSenderController {
     @Autowired
     private JavaMailSender mailSender;
 
+    public Integer RandomOtp() {
+        Random random = new Random();
+        int value = random.nextInt(100000, 999999);
+        return value;
+    }
+
     @PostMapping("/send/{email}")
     public HashMap<String, Object> sendMail(@PathVariable String email, @RequestBody EmailDetails emaildetails) {
         HashMap<String, Object> response = new HashMap<>();
         try {
+            int value = RandomOtp();
+            emaildetails.setMessage("Your Otp For the Login is " + value + " please enter properly");
             SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
             simpleMailMessage.setFrom(frommail);
             simpleMailMessage.setSubject(emaildetails.getSubject());
@@ -36,6 +46,7 @@ public class EmailSenderController {
             mailSender.send(simpleMailMessage);
             response.put("status", 200);
             response.put("response", "Email Sent Successfully");
+            response.put("otp", value);
             return response;
         } catch (Exception e) {
             response.put("status", 500);
