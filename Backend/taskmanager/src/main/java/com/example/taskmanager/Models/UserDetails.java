@@ -1,10 +1,15 @@
 package com.example.taskmanager.Models;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class UserDetails {
+    @NotBlank
     private String firstname;
+    @NotBlank
     private String lastname;
-    private String mobileno;
+    @NotBlank
     private String email;
+    @NotBlank
     private String password;
 
     public String getFirstname() {
@@ -21,14 +26,6 @@ public class UserDetails {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public String getMobileno() {
-        return mobileno;
-    }
-
-    public void setMobileno(String mobileno) {
-        this.mobileno = mobileno;
     }
 
     public String getEmail() {
