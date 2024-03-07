@@ -1,62 +1,61 @@
-
 .box {
-     display: flex;
-     justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
-    margin-top: 15vh;
-    display: flex;
-    height: 65vh;
-    width: 54vw;
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.674);
+  margin-top: 15vh;
+  display: flex;
+  height: 65vh;
+  width: 54vw;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.674);
 }
 
-.imgsec{
-    width: 27vw;
-    background-color: blueviolet;
+.imgsec {
+  width: 27vw;
+  background-color: blueviolet;
 }
 
 .formsec {
-    width: 27vw;
-    background-color: antiquewhite;
+  width: 27vw;
+  background-color: antiquewhite;
 }
 
 .loginbox {
-    margin-top: 5vh;
-    height: 50vh;
-    width: 25vw;
-    background-color: chocolate;
-    border-radius: 25px;
+  margin-top: 5vh;
+  width: 25vw;
+  height: 55vh;
+  background-color: chocolate;
+  border-radius: 25px;
 }
 
 .formdiv {
-    margin-top: 5px;    
+  margin-top: 5px;
 }
 
 .formdiv div {
-    margin-left: 50px;
+  margin-left: 30px;
 }
 
 .formdiv div label {
-    font-size: large;
-    font-weight: bold;
+  font-size: large;
+  font-weight: bold;
 }
 
 .formdiv div input {
-    height: 30px;
-    width: 20vw;
-    margin-top: 10px;
-    border-radius: 15px;
-    border-color: chocolate;
-
+  height: 30px;
+  width: 20vw;
+  margin-top: 10px;
+  border-radius: 15px;
+  border-color: chocolate;
 }
 
 .formdiv div button {
-    height: 30px;
-    width: 100px;
-    font-weight: 600;
-    background-color: rgb(127, 127, 216);
-    border-radius: 10px;
-    border-color: chocolate;
+  height: 30px;
+  width: 100px;
+  margin-top: 10px;
+  font-weight: 600;
+  background-color: rgb(127, 127, 216);
+  border-radius: 10px;
+  border-color: chocolate;
 }

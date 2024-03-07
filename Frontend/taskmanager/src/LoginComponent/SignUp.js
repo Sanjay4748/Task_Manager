@@ -1,82 +1,152 @@
-import { useState} from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from './Login.module.css';
-import { Link } from 'react-router-dom';
-import Httfunctions from '../HttpComponent/http-common';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./Login.module.css";
+import { Link } from "react-router-dom";
+import Httfunctions from "../HttpComponent/http-common";
+import Validations from "../ValidationsComponent/Validations";
 
 function Signup() {
+  const [userfirstname, setUserFirstname] = useState("");
+  const [userLastname, setUaseLastname] = useState("");
   const [userEmail, setUserEmail] = useState("");
-  const [enteredOtp, setEnteredOtp] = useState("");
   const [password, setPassword] = useState("");
-  const [disableOtp, setDisableOtp] = useState(false);
-  const [otpCount, setOtpCount] = useState(0);
-  const [otpvalue ,setOtpValue] = useState("");
-  const [placeholdermsg , Setplaceholdermsg] = useState("Enter your Otp Here");
+  const [emailexist, setEmailExist] = useState(false);
+  const [signupdisable, setSignupDisable] = useState(true);
+  const [fieldrequired,setFieldRequired] = useState(false);
 
   const navigate = useNavigate();
-   
-  const sendOtp = async (e) => {
-    e.preventDefault();
-    var otpmsg = {
-      "subject":"Otp Verification ",
-      "message":""
+
+  useEffect(() => {
+    if (userfirstname && userLastname && userEmail && password) {
+      setSignupDisable(false);
+    } else {
+      setSignupDisable(true);
     }
+  }, [userfirstname, userLastname, userEmail, password]);
 
-    await Httfunctions.SendMail(userEmail,otpmsg)
-    .then((response) => {
-      setOtpValue((response.data.otp).toString());
-    }).catch((err) => {
-      console.error(err);
-    });
+  const SignupHandle = async (e) => {
+    e.preventDefault();
 
-    setOtpCount(otpCount + 1);
-    if (otpCount === 2) {
-      Setplaceholdermsg("Otp Limit exceeded Try After Some Time")
-      setDisableOtp(true);
+    if (userfirstname !== "" && userLastname !== "" && userEmail !== "" && password !== "") {
+      var signupobj = {
+        firstname: userfirstname,
+        lastname: userLastname,
+        email: userEmail,
+        password: password,
+      };
+
+      await Httfunctions.GetUser(userEmail)
+      .then((response)=>{
+          console.log(response.data);
+          if(response.data.status ===400){
+            navigate("/verifyuser",{state:{email:userEmail}});
+          }else if(response.data.status ===200){
+            setEmailExist(true);
+          }
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+
+    } else {
+      setSignupDisable(true);
     }
   };
 
-  const SignupHandle = (e) => {
-    e.preventDefault();
-    if(otpvalue === enteredOtp){
-      navigate('/home');
+  const NameHandle = (e) => {
+    const isvalid = Validations.NameValidation(e.target.value);
+    if (isvalid) {
+      setFieldRequired(false);
+    } else {
+      setFieldRequired(true);
     }
   };
+
+  const EmailHandle =(e) =>{
+    const isvalid = Validations.EmailValidation(e.target.value);
+    if(isvalid){
+      setFieldRequired(false);
+    }else{
+      setFieldRequired(true);
+    }
+  }
 
   return (
-    <div className={styles.loginbox}>
+    <div className={styles.loginbox} style={{ height: "55vh" }}>
       <div className={styles.box}>
         <h3>User Login</h3>
       </div>
-      <form className={styles.formdiv} onSubmit={SignupHandle} >
+      <form className={styles.formdiv} onSubmit={SignupHandle}>
+        <div>
+          <label>First Name:</label>
+        </div>
+        <div>
+          <input
+            type="text"
+            value={userfirstname}
+            id="firstname"
+            onChange={(e) => {
+              setUserFirstname(e.target.value);
+            }}
+            onBlur={(e) => NameHandle(e)}
+          />
+        </div>
+        <div>
+          <label>Last Name:</label>
+        </div>
+        <div>
+          <input
+            type="text"
+            value={userLastname}
+            id="lastnamme"
+            onChange={(e) => {
+              setUaseLastname(e.target.value);
+            }}
+            onBlur={(e) => NameHandle(e)}
+          />
+        </div>
         <div>
           <label>Email :</label>
         </div>
         <div>
-          <input type="email" value={userEmail} id='email' onChange={(e) => { setUserEmail(e.target.value) }} />
+          <input
+            type="email"
+            value={userEmail}
+            id="email"
+            onChange={(e) => {
+              setUserEmail(e.target.value);
+            }}
+            onBlur={(e)=>{EmailHandle(e)}}
+          />
         </div>
-        <div>
-          <label>OTP</label>
-        </div>
-        <div>
-          <input type="text" value={enteredOtp} placeholder={placeholdermsg} id='otp' onChange={(e) => { setEnteredOtp(e.target.value) }} />
-        </div>
-        <div style={{ marginLeft: "17vw" }}>
-          <button type='button' disabled={disableOtp} style={{ backgroundColor: "greenyellow" }} onClick={sendOtp}>Send OTP</button>
-        </div>
+        {emailexist ? (
+          <span style={{ color: "blue", fontSize: "15px", marginLeft: "17px" }}>
+            Email Already Exists Try to Login or use Different mail
+          </span>
+        ) : null}
         <div>
           <label>Password :</label>
         </div>
         <div>
-          <input type="password" value={password} id='password' onChange={(e) => { setPassword(e.target.value) }} />
+          <input
+            type="password"
+            value={password}
+            id="password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
         </div>
         <div>
-          <button type="submit">Sign Up</button>
+          <button type="submit" disabled={signupdisable}>
+            Sign Up
+          </button>
         </div>
-        <div style={{ marginLeft: "12vw" }}>
-          Existing User ? <Link to={"/"}>Login here</Link>
+        <div style={{ marginLeft: "10.5vw" }}>
+          Existing User ? <Link to={"/login"}>Login here</Link>
         </div>
       </form>
+      {fieldrequired?<span style={{display:"flex",justifyContent:"center",color:"red"}} >*Incorrect Input</span>:null}
     </div>
   );
 }

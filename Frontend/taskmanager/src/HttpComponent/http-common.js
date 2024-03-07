@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-const baseurl = 'http://192.168.1.66:8080/';
+const baseurl = 'http://localhost:8080/';
+
+const GetUser = async (email) =>{
+    try{
+        return await axios.get(baseurl+`/user/${email}`);
+    }catch(err){
+        return err;
+    }
+}
 
 const AddUser = async (body) => {
    try {
@@ -18,6 +26,6 @@ const SendMail = async (email, body) => {
     }
 };
 
-const HttpFunctions = { AddUser, SendMail };
+const HttpFunctions = { AddUser, SendMail, GetUser};
 
 export default HttpFunctions;

@@ -20,14 +20,14 @@ function Login() {
         <div>
           <input type="password" />
         </div>
-        <div style={{ marginLeft: "16vw" }}>
+        <div style={{ marginLeft: "14vw" }}>
           <Link to={"/forgotpassword"}>forgot password?</Link>
         </div>
         <div>
           <button type="submit">Login</button>
         </div>
-        <div style={{ marginLeft: "14vw" }}>
-          New User <Link to={"/signup"}>Signup here</Link>
+        <div style={{ marginLeft: "11.5vw" }}>
+          New User <Link to={"/"}>Signup here</Link>
         </div>
       </form>
     </div>
