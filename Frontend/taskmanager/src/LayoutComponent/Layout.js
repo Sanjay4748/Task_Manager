@@ -1,15 +1,17 @@
-
 import styles from './Layout.module.css';
 import Header from './Header';
 import Footer from './Footer';
-import MidContent from './MidContent';
+import Navbar from './Navbar';
 
-function Layout(props){
-    return(
+function Layout(props) {
+    return (
         <div className={styles.layout}>
-            <Header/>
-            <div style={{marginTop:"10vh"}}>
-            <MidContent children={props.children}/>
+            <Header />
+            <div style={{ marginTop: "10vh" }}>
+                <Navbar/>
+            </div>
+            <div className={styles.midcontent} >
+                {props.child}
             </div>
             <Footer/>
         </div>

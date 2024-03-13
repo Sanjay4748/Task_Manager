@@ -16,17 +16,31 @@
     width: 100vw;
 }
 
-.midcontent {
-    display: table;
-    height: 80vh;
+.navbar {
+    overflow: hidden;
+    background-color: rgb(127, 120, 111);
+    height: 10vh;
     width: 100vw;
-    background-color: blue;
+    position: fixed;
 }
 
-.sidebarcontent {
-    display: table-cell;
-    width: 20vw;
-    background-color: rgb(107, 71, 71);
+.navbar a {
+    text-decoration: none;
+    float: left;
+    padding: 25px 30px;
+    color: black;
+
+}
+
+.navbar a:hover {
+    color: rgb(255, 255, 255);
+}
+
+.midcontent {
+    margin-top: 10vh;
+    height: 70vh;
+    width: 100vw;
+    background-color: blue;
 }
 
 .layout {
@@ -36,7 +50,3 @@
     width: 100vw;
 }
 
-.midsec2content {
-    display: flex;
-    justify-content: center;
-}

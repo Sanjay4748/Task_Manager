@@ -1,0 +1,21 @@
+
+.name {
+    display: flex;
+    justify-content: center;
+
+}
+
+.profile {
+    display: flex;
+    margin-top: 10vh;
+    margin-left: 30vw;
+    height: 50vh;
+    width:40vw;
+    background-color: aliceblue;
+    border-radius: 25px;
+}
+
+.profile div{
+    display: flex;
+    flex-direction: row;
+}
