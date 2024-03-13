@@ -4,7 +4,6 @@ import Login from "./LoginComponent/Login";
 import Signup from "./LoginComponent/SignUp";
 import ForgotPassword from "./LoginComponent/ForgotPassword";
 import Layout from "./LayoutComponent/Layout";
-import OtpLayout from "./LoginComponent/OtpPage";
 function App() {
   return(
     <BrowserRouter>
@@ -12,7 +11,6 @@ function App() {
       <Route path="/login" element={<LoginLayout children = {<Login/>}/>} />
       <Route path="/" element={<LoginLayout children={<Signup/>}/>}/>
       <Route path="/forgotpassword" element={<LoginLayout children = {<ForgotPassword/>}/>} />
-      <Route path="/verifyuser" element={<LoginLayout children={<OtpLayout/>}/>}/>
       <Route path="/home" element={<Layout/>}/>
     </Routes>
     </BrowserRouter>

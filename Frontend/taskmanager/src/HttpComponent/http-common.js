@@ -4,7 +4,7 @@ const baseurl = 'http://localhost:8080/';
 
 const GetUser = async (email) =>{
     try{
-        return await axios.get(baseurl+`/user/${email}`);
+        return await axios.get(baseurl+`user/${email}`);
     }catch(err){
         return err;
     }
