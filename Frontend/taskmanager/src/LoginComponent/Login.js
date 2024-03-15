@@ -22,6 +22,7 @@ function Login(){
           localStorage.setItem("firstname",response.data.response.firstname);
           localStorage.setItem("lastname",response.data.response.lastname);
           localStorage.setItem("email",useremail);
+          localStorage.setItem("password",userpass);
           navigate('/home')
         }
         else{

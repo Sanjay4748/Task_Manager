@@ -79,7 +79,6 @@ function Signup() {
   const PasswordHandle = (e) =>{
     setPassword(e.target.value);
     const isValid = Validations.PasswordValidation(e.target.value);
-    console.log("hii")
     if(isValid){
       setPassValidation(true);
     }else{

@@ -18,7 +18,6 @@ function EmailValidation(email){
 }
 
 function PasswordValidation(password){
-    console.log("padd")
     const regex = /^(?=.*[A-Z])[^\s]{10,15}$/;
     const isValid = regex.test(password);
     return isValid;

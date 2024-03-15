@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const baseurl = 'http://localhost:8080/';
+const baseurl = 'http://localhost:8080';
 
 const GetUser = async (email) =>{
     try{
-        return await axios.get(baseurl+`user/${email}`);
+        return await axios.get(baseurl+`/user/${email}`);
     }catch(err){
         return err;
     }
@@ -12,7 +12,7 @@ const GetUser = async (email) =>{
 
 const AddUser = async (body) => {
    try {
-    return await axios.post(baseurl + 'adduser', body);
+    return await axios.post(baseurl + '/adduser', body);
     } catch (err) {
         return err;
     }
@@ -20,12 +20,23 @@ const AddUser = async (body) => {
 
 const SendMail = async (email, body) => {
     try {
-        return axios.post(baseurl + `mail/send/${email}`, body);
+        return axios.post(baseurl + `/mail/send/${email}`, body);
     } catch (err) {
         return err;
     }
 };
 
-const HttpFunctions = { AddUser, SendMail, GetUser};
+const ChangePass = async (email,newpassword) =>{
+    try{
+        return axios.post(baseurl + `/user/changepassword`,null,{params:{
+            "email":email,
+            "newpassword":newpassword
+        }});
+    }catch(err){
+        return err;
+    }
+}
+
+const HttpFunctions = { AddUser, SendMail, GetUser,ChangePass};
 
 export default HttpFunctions;

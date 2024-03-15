@@ -46,16 +46,16 @@ function ProfilePage(){
             <h4>:</h4>
             <h4>4</h4>
             </div>
-            <div1>
+            <div>
             <button onClick={ChangePassword} >
                 change password
             </button>
-            </div1>
-            <div1 className={styles.profilelogout} >
+            </div>
+            <div className={styles.profilelogout} >
             <button onClick={Logout} >
                 Logout
             </button>
-            </div1>
+            </div>
         </div>
     );
 }
