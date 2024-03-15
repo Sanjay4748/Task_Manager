@@ -6,7 +6,6 @@
 }
 
 .profile {
-    display: flex;
     margin-top: 10vh;
     margin-left: 30vw;
     height: 50vh;
@@ -15,7 +14,72 @@
     border-radius: 25px;
 }
 
-.profile div{
+.profile div {
+    display: grid;
+    grid-template-columns: 1fr 20px 1fr;
+}
+
+.profile div h3 {
+   float: left;
+   margin-left: 10px;
+}
+
+.profile div h4 {
+    float: left;
+}
+
+.profileimg {
+    margin-left: 15vw;
+    height: 10vh;
+    width: 10vw;
+    border-radius: 100px;
+}
+
+.profilelogout {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.profilelogout button{
+    color: rgb(0, 0, 0);
+    background-color: rgb(64, 64, 159);
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.changepass {
+    display: flex;
+    height: 50vh;
+    width: 40vw;
+    margin-left: 30vw;
+    margin-top: 10vh;
+    background-color: aliceblue;
+    border-radius: 25px;
+}
+
+.changepass form div {
+    display: flex;
+    margin-top: 15px;
+    
+}
+
+.changepass form div input{
+    height: 30px;
+    width: 250px;
+    border-radius: 5px;
+}
+
+.changepass form div label{
+    font-size: larger;
+}
+
+.changepass form div button{
+    margin-left: 19vw;
+    height: 40px;
+    width: 100px;
+    color: black;
+    background-color: rgb(50, 84, 146);
+    border-color: rgb(50, 84, 146);
 }

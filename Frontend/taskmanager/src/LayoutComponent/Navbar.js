@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './Layout.module.css'
 
 function Navbar(){
@@ -8,27 +9,27 @@ function Navbar(){
 
     return(
         <div className={styles.navbar}>
-            <a href='/home'>
+            <Link to='/home'>
                 Home
-            </a>
-            <a href='/home' >
+            </Link>
+            <Link to='/home' >
                 View Task
-            </a>
-            <a href='/home' >
+            </Link>
+            <Link to='/home' >
                 Add Task
-            </a>
-            <a href='/home ' >
+            </Link>
+            <Link to='/home ' >
                 Update Task
-            </a>
-            <a href='/home' >
+            </Link>
+            <Link to='/home' >
                 Delete Task
-            </a>
-            <a href='/profile' >
+            </Link>
+            <Link to='/profile' >
                 Profile
-            </a>
-            <a style={{"float":"right"}} onClick={Logout} href='/login' >
+            </Link>
+            <Link style={{"float":"right"}} onClick={Logout} to='/login' >
                 Logout
-            </a>
+            </Link>
         </div>
     );
 }

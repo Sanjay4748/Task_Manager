@@ -6,6 +6,7 @@ import ForgotPassword from "./LoginComponent/ForgotPassword";
 import Layout from "./LayoutComponent/Layout";
 import HomePage from "./HomeComponent/HomePage";
 import ProfilePage from "./HomeComponent/ProfilePage";
+import ChangePassword from "./HomeComponent/ChangePassword";
 
 function App() {
   return(
@@ -16,6 +17,7 @@ function App() {
       <Route path="/forgotpassword" element={<LoginLayout children = {<ForgotPassword/>}/>} />
       <Route path="/home" element={<Layout child={<HomePage/>}/>}/>
       <Route path="/profile" element={<Layout child = {<ProfilePage/>} />}  />
+      <Route path="/changepassword" element={<Layout child={<ChangePassword/>} />} />
     </Routes>
     </BrowserRouter>
   );
