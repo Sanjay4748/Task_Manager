@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.taskmanager.Models.ForgotPassword;
 import com.example.taskmanager.Models.UserDetails;
 import com.example.taskmanager.Repository.UserDetailsRepo;
 
@@ -83,15 +83,14 @@ public class UserDetailsController {
     }
 
     @PostMapping("/user/changepassword")
-    public HashMap<String, Object> ChangePassword(@RequestBody ForgotPassword data) {
+    public HashMap<String, Object> ChangePassword(@RequestParam String email, @RequestParam String newpassword) {
         HashMap<String, Object> response = new HashMap<>();
         try {
-            String email = data.getEmail();
             UserDetails userDetails = userdetailsrepo.findByEmail(email);
             if (userDetails != null) {
                 UserDetails newUserDetails = new UserDetails();
                 newUserDetails.setEmail(email);
-                newUserDetails.setPassword(data.getNewpassword());
+                newUserDetails.setPassword(newpassword);
                 newUserDetails.setFirstname(userDetails.getFirstname());
                 newUserDetails.setLastname(userDetails.getLastname());
                 userdetailsrepo.deleteByEmail(email);
