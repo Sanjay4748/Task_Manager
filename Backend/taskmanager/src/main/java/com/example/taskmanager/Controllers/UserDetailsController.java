@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.taskmanager.Models.ForgotPassword;
 import com.example.taskmanager.Models.UserDetails;
 import com.example.taskmanager.Repository.UserDetailsRepo;
 
@@ -78,6 +80,33 @@ public class UserDetailsController {
             response.put("response", e.getMessage());
             return response;
         }
+    }
+
+    @PostMapping("/user/changepassword")
+    public HashMap<String, Object> ChangePassword(@RequestBody ForgotPassword data) {
+        HashMap<String, Object> response = new HashMap<>();
+        try {
+            String email = data.getEmail();
+            UserDetails userDetails = userdetailsrepo.findByEmail(email);
+            if (userDetails != null) {
+                UserDetails newUserDetails = new UserDetails();
+                newUserDetails.setEmail(email);
+                newUserDetails.setPassword(data.getNewpassword());
+                newUserDetails.setFirstname(userDetails.getFirstname());
+                newUserDetails.setLastname(userDetails.getLastname());
+                userdetailsrepo.deleteByEmail(email);
+                userdetailsrepo.save(newUserDetails);
+                response.put("status", 200);
+                response.put("response", "Password updated successfully");
+            } else {
+                response.put("status", 400);
+                response.put("response", "Email not found");
+            }
+        } catch (Exception e) {
+            response.put("status", 500);
+            response.put("response", e.getMessage());
+        }
+        return response;
     }
 
 }
