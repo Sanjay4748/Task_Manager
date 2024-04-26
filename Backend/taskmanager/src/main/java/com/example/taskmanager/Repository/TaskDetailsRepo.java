@@ -7,3 +7,4 @@ public interface TaskDetailsRepo extends MongoRepository<TaskDetails, Integer> {
 
     TaskDetails findByTaskid(int taskid);
 }
+   
