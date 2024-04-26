@@ -7,6 +7,7 @@ import Layout from "./LayoutComponent/Layout";
 import HomePage from "./HomeComponent/HomePage";
 import ProfilePage from "./HomeComponent/ProfilePage";
 import ChangePassword from "./HomeComponent/ChangePassword";
+import Viewtasks from "./TasksComponent/ViewTasks";
 
 function App() {
   return(
@@ -18,6 +19,8 @@ function App() {
       <Route path="/home" element={<Layout child={<HomePage/>}/>}/>
       <Route path="/profile" element={<Layout child = {<ProfilePage/>} />}  />
       <Route path="/changepassword" element={<Layout child={<ChangePassword/>} />} />
+      <Route path="/alltasks" element={<Layout child={<Viewtasks/>}/>}/>
+
     </Routes>
     </BrowserRouter>
   );

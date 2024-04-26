@@ -12,16 +12,16 @@ function Navbar(){
             <Link to='/home'>
                 Home
             </Link>
-            <Link to='/home' >
+            <Link to='/alltasks' >
                 View Task
             </Link>
-            <Link to='/home' >
+            <Link to='/addtask' >
                 Add Task
             </Link>
-            <Link to='/home ' >
+            <Link to='/updatetask' >
                 Update Task
             </Link>
-            <Link to='/home' >
+            <Link to='/deletetask' >
                 Delete Task
             </Link>
             <Link to='/profile' >
