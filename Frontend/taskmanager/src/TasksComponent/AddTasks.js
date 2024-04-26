@@ -1,7 +1,7 @@
-function AddTask(){
+function Addtask(){
     return(<div>
         add task
     </div>);
 }
 
-export default AddTask
+export default Addtask

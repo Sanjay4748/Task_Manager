@@ -1,7 +1,7 @@
-function UpdateTask(){
+function Updatetask(){
     return(<div>
         update task
     </div>);
 }
 
-export default UpdateTask
+export default Updatetask

@@ -8,6 +8,9 @@ import HomePage from "./HomeComponent/HomePage";
 import ProfilePage from "./HomeComponent/ProfilePage";
 import ChangePassword from "./HomeComponent/ChangePassword";
 import Viewtasks from "./TasksComponent/ViewTasks";
+import Updatetask from "./TasksComponent/UpdateTasks";
+import Deletetask from "./TasksComponent/DeleteTasks";
+import Addtask from "./TasksComponent/AddTasks";
 
 function App() {
   return(
@@ -20,7 +23,9 @@ function App() {
       <Route path="/profile" element={<Layout child = {<ProfilePage/>} />}  />
       <Route path="/changepassword" element={<Layout child={<ChangePassword/>} />} />
       <Route path="/alltasks" element={<Layout child={<Viewtasks/>}/>}/>
-
+      <Route path="/addtask" element={<Layout child={<Addtask/>}/>}/>
+      <Route path="/updatetask" element={<Layout child={<Updatetask/>}/>}/>
+      <Route path="/deletetask" element={<Layout child={<Deletetask/>}/>}/>
     </Routes>
     </BrowserRouter>
   );
