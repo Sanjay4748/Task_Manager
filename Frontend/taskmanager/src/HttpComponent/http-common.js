@@ -37,6 +37,14 @@ const ChangePass = async (email,newpassword) =>{
     }
 }
 
-const HttpFunctions = { AddUser, SendMail, GetUser,ChangePass};
+const Gettasks = async ()=>{
+    try{
+        return axios.get(baseurl+`/task/alltasks`);
+    }catch(err){
+        return err;
+    }
+}
+
+const HttpFunctions = { AddUser, SendMail, GetUser,ChangePass,Gettasks};
 
 export default HttpFunctions;
