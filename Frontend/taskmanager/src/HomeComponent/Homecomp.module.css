@@ -49,6 +49,13 @@
     box-shadow: none;
 }
 
+.taskbox {
+    height: 50px;
+    width: 50px;
+    background-color: aliceblue;
+    box-shadow: rgb(87, 80, 80);
+}
+
 .changepass {
     display: flex;
     height: 50vh;

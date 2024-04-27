@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     const logged = localStorage.getItem("islogged");
     Acesspaths(logged === "true");
-  }, []);
+  }, [accesspaths]);
 
   return (
     <BrowserRouter>

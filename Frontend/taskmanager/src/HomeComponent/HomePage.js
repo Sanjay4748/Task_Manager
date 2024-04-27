@@ -29,12 +29,17 @@ function HomePage() {
       <div className={styles.name}>
         <h2>Welcome {firstname}</h2>
       </div>
-      <div>
-        <h3>Your Tasks</h3>
+      <div style={{display:"flex"}} >
+        <div style={{alignItems:"center"}} ><h3>Your Tasks</h3></div>
+
         <div>
-          {completetasks.map((task, index) => (
+          <div className = {styles.taskbox}>
+            hi
+          </div>
+
+          {/* {completetasks.map((task, index) => (
             <h2 key={index}>{task.taskname}</h2> 
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
