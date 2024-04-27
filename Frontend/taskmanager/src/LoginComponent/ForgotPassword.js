@@ -27,7 +27,7 @@ function ForgotPassword(){
           <button type="submit">Login</button>
         </div>
         <div style={{ marginLeft: "14vw" }}>
-          New User <Link to={"/signup"}>Signup here</Link>
+          New User <Link to={"/"}>Signup here</Link>
         </div>
       </form>
     </div>

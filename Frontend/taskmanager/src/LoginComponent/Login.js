@@ -19,6 +19,7 @@ function Login(){
     .then((response)=>{
       if(response.data?.status ===200){
         if(response.data?.response?.password === userpass){
+          localStorage.setItem("islogged",true);
           localStorage.setItem("firstname",response.data.response.firstname);
           localStorage.setItem("lastname",response.data.response.lastname);
           localStorage.setItem("email",useremail);
