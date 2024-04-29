@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./Homecomp.module.css";
+import { Container, Row, Col } from "react-bootstrap";
 import HttpFunctions from "../HttpComponent/http-common";
 
 function HomePage() {
@@ -29,18 +30,17 @@ function HomePage() {
       <div className={styles.name}>
         <h2>Welcome {firstname}</h2>
       </div>
-      <div style={{display:"flex"}} >
-        <div style={{alignItems:"center"}} ><h3>Your Tasks</h3></div>
-
-        <div>
-          <div className = {styles.taskbox}>
-            hi
-          </div>
-
-          {/* {completetasks.map((task, index) => (
-            <h2 key={index}>{task.taskname}</h2> 
-          ))} */}
-        </div>
+      <div>
+        <h3>Your Tasks</h3>
+        <Container  >
+          <Row>
+            {completetasks.map((task, index) => (
+              <Col key={index} style={{ border: "1px solid #ccc", padding: "10px", borderRadius: "5px", margin: "5px", height:"100px"}}>
+                {task.taskname}
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </div>
     </div>
   );
