@@ -28,10 +28,12 @@ public class EmailSenderController {
 
     public Integer RandomOtp() {
         Random random = new Random();
-        int value = random.nextInt(100000, 999999);
+        int minValue = 100000; 
+        int maxValue = 999999; 
+        int value = random.nextInt(maxValue - minValue + 1) + minValue;
         return value;
     }
-
+    
     @PostMapping("/send/{email}")
     public HashMap<String, Object> sendMail(@PathVariable String email, @RequestBody EmailDetails emaildetails) {
         HashMap<String, Object> response = new HashMap<>();
