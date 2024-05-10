@@ -7,7 +7,6 @@ function Addtask(){
         console.log(taskname);
     }
     
-
     return(<div>
         <form onSubmit={addtask} >
             <div>
