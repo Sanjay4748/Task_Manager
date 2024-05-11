@@ -1,5 +1,6 @@
 package com.example.taskmanager.Controllers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -87,7 +88,7 @@ public class TaskDetailsController {
             }
             else{
                 response.put("status", 400);
-                response.put("response", "no tasks found please add new tasks");
+                response.put("response", new ArrayList<TaskDetails>());
                 return response;
             }
         }
