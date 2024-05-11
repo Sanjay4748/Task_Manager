@@ -12,18 +12,24 @@ function HomePage() {
     if (userfirstname) {
       setFirstName(userfirstname);
     }
-
-    const ALLtasks = async () => {
-      await HttpFunctions.Gettasks()
-        .then((response) => {
-          setTasks(response.data.response);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  
+    const fetchTasks = async () => {
+      try {
+        const response = await HttpFunctions.Gettasks();
+        const responsearr = response.data?.response;
+        if (responsearr && responsearr.length > 0) {
+          setTasks(responsearr);
+        } else {
+          setTasks([{ taskname: "No tasks found" }]);
+        }
+      } catch (err) {
+        console.log(err);
+      }
     };
-    ALLtasks();
+  
+    fetchTasks();
   }, []);
+  
 
   return (
     <div>
