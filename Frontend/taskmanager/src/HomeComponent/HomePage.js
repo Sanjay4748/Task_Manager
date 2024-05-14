@@ -31,7 +31,7 @@ function HomePage() {
     };
 
     fetchTasks();
-  }, []);
+  }, [completetasks]);
 
   return (
     <div>

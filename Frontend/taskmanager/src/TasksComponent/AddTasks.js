@@ -15,6 +15,12 @@ function Addtask(){
                 </label>
                 <input type="text" id="taskname" onChange={(e)=>{Settaskname(e.target.value)}} />
             </div>
+            <div>
+                <label>
+                    Task 
+                </label>
+                <input type="text" />
+            </div>
         </form>
     </div>);
 }
