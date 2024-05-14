@@ -6,30 +6,32 @@ import HttpFunctions from "../HttpComponent/http-common";
 function HomePage() {
   const [firstname, setFirstName] = useState("");
   const [completetasks, setTasks] = useState([]);
+  const [taskspresent, setTasksPresent] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const userfirstname = localStorage.getItem("firstname");
     if (userfirstname) {
       setFirstName(userfirstname);
     }
-  
+
     const fetchTasks = async () => {
       try {
         const response = await HttpFunctions.Gettasks();
-        const responsearr = response.data?.response;
-        if (responsearr && responsearr.length > 0) {
-          setTasks(responsearr);
+        if (response.data.response.length > 0) {
+          setTasks(response.data.response);
         } else {
-          setTasks([{ taskname: "No tasks found" }]);
+          setTasksPresent(false);
         }
       } catch (err) {
         console.log(err);
+      } finally {
+        setLoading(false);
       }
     };
-  
+
     fetchTasks();
   }, []);
-  
 
   return (
     <div>
@@ -38,15 +40,23 @@ function HomePage() {
       </div>
       <div>
         <h3>Your Tasks</h3>
-        <Container  >
-          <Row>
-            {completetasks.map((task, index) => (
-              <Col key={index} style={{ border: "1px solid #ccc", padding: "10px", borderRadius: "5px", margin: "5px", height:"100px"}}>
-                {task.taskname}
-              </Col>
-            ))}
-          </Row>
-        </Container>
+        {loading ? (
+          <p>Loading tasks...</p>
+        ) : (
+          <Container>
+            <Row>
+              {taskspresent ? (
+                completetasks.map((task) => (
+                  <Col key={task.taskid} style={{ border: "1px solid #ccc", padding: "10px", borderRadius: "5px", margin: "5px", height: "100px" }}>
+                    {task.taskname}
+                  </Col>
+                ))
+              ) : (
+                <h3>No Tasks Found</h3>
+              )}
+            </Row>
+          </Container>
+        )}
       </div>
     </div>
   );
